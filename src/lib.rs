@@ -11,7 +11,7 @@ pub struct MeteoData {
     pub timezone_abbreviation: String,
     pub elevation: f32,
     pub current_weather_units: WeatherUnitsData,
-    pub current_weather_interval_seconds: u32,
+//    pub current_weather_interval_seconds: u32,
     pub current_weather: WeatherData,
     pub hourly_units: HourlyUnitsData,
     pub hourly: HourlyData,
