@@ -11,7 +11,6 @@ pub struct MeteoData {
     pub timezone_abbreviation: String,
     pub elevation: f32,
     pub current_weather_units: WeatherUnitsData,
-//    pub current_weather_interval_seconds: u32,
     pub current_weather: WeatherData,
     pub hourly_units: HourlyUnitsData,
     pub hourly: HourlyData,
@@ -34,6 +33,7 @@ pub struct WeatherData {
     pub time: String,
     pub temperature: f32,
     pub windspeed: f32,
+    pub winddirection: f32,
     pub is_day: u8,
     pub weathercode: u8,
 }
@@ -83,11 +83,8 @@ impl GeoData {
 pub fn request_geolocation(location: &str) -> Result<Vec<GeoData>, Box<dyn std::error::Error>> {
     let mut url = String::from("https://geocode.maps.co/search?q=");
     url.push_str(location);
-    println!("{}", url);
     let result = reqwest::blocking::get(url)?;
-    println!("{:?}", result);
     let parsed = result.json::<Vec<GeoData>>()?;
-    println!("{:?}", parsed[0]);
 
     Ok(parsed)
 }
